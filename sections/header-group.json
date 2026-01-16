@@ -11,6 +11,32 @@
   "type": "header",
   "name": "Header group",
   "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "shopify://shop_images/simpsonStyle__1_-removebg-preview.png",
+        "logo_max_width": 120,
+        "logo_mobile_max_width": 100,
+        "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "menu_open_trigger": "click",
+        "opening_from": "bottom",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": false,
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "show_country_flag": true,
+        "show_country_name": false,
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/simpsonStyle__1_-removebg-preview.png",
+        "reduce_padding": true,
+        "background_opacity": 100,
+        "background_blur_radius": 0
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -52,36 +78,10 @@
         "background_gradient": "",
         "text_color": "#ffffff"
       }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-        "enable_sticky": true,
-        "hide_on_scroll": false,
-        "logo": "shopify://shop_images/simpsonStyle__1_-removebg-preview.png",
-        "logo_max_width": 120,
-        "logo_mobile_max_width": 100,
-        "menu": "main-menu",
-        "sidebar_menu": "",
-        "secondary_menu": "",
-        "menu_open_trigger": "click",
-        "opening_from": "bottom",
-        "layout": "logo_left_navigation_center",
-        "show_social_media": false,
-        "show_locale_selector": true,
-        "show_country_selector": true,
-        "show_country_flag": true,
-        "show_country_name": false,
-        "transparent_header_text_color": "#ffffff",
-        "transparent_logo": "shopify://shop_images/simpsonStyle__1_-removebg-preview.png",
-        "reduce_padding": true,
-        "background_opacity": 100,
-        "background_blur_radius": 0
-      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "announcement-bar"
   ]
 }
