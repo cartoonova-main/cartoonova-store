@@ -1,0 +1,426 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --how-it-works-gap: {% if section.settings.gap == 'small' %}var(--spacing-8){% elsif section.settings.gap == 'medium' %}var(--spacing-12){% elsif section.settings.gap == 'large' %}var(--spacing-16){% else %}var(--spacing-20){% endif %};
+    --circle-size-mobile: 200px;
+    --circle-size-desktop: 280px;
+    --circle-border-width: 4px;
+    --circle-border-color: {{ section.settings.circle_border_color | default: '#FFD700' }};
+    --step-number-color: {{ section.settings.step_number_color | default: '#FFD700' }};
+    --title-underline-color: {{ section.settings.title_underline_color | default: '#FFD700' }};
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} {
+      --circle-size-mobile: 240px;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      --circle-size-mobile: var(--circle-size-desktop);
+    }
+  }
+
+  .how-it-works__title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-8);
+  }
+
+  .how-it-works__title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--title-underline-color);
+    border-radius: 2px;
+  }
+
+  .how-it-works__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--how-it-works-gap);
+    align-items: start;
+    justify-items: center;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 700px) {
+    .how-it-works__steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-8);
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .how-it-works__steps {
+      gap: var(--how-it-works-gap);
+    }
+  }
+
+  .how-it-works__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .how-it-works__circle {
+    width: var(--circle-size-mobile);
+    height: var(--circle-size-mobile);
+    border-radius: 50%;
+    border: var(--circle-border-width) solid var(--circle-border-color);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: var(--spacing-6);
+    background: var(--step-circle-background, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .how-it-works__circle {
+      width: var(--circle-size-desktop);
+      height: var(--circle-size-desktop);
+    }
+  }
+
+  .how-it-works__circle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .how-it-works__step-number {
+    color: var(--step-number-color);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-2);
+  }
+
+  @media screen and (min-width: 700px) {
+    .how-it-works__step-number {
+      font-size: 1rem;
+    }
+  }
+
+  .how-it-works__step-title {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 700px) {
+    .how-it-works__step-title {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .how-it-works__step-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .how-it-works__button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-6);
+  }
+
+  @media screen and (min-width: 700px) {
+    .how-it-works__button-wrapper {
+      margin-top: var(--spacing-6);
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    <div class="container">
+      <div class="v-stack gap-12 text-center">
+        {%- if section.settings.title != blank -%}
+          <h2 class="how-it-works__title {{ section.settings.heading_tag }}">
+            {{ section.settings.title | escape }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="how-it-works__steps">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign loading_strategy = nil
+                
+                if section.index > 3 or forloop.index > 3
+                  assign loading_strategy = 'lazy'
+                endif
+              -%}
+
+              <div class="how-it-works__step" {{ block.shopify_attributes }}>
+                <div class="how-it-works__circle" style="{% if block.settings.circle_background != blank %}--step-circle-background: {{ block.settings.circle_background }};{% endif %}">
+                  {%- if block.settings.image != blank -%}
+                    {%- liquid
+                      assign image_url = block.settings.image | image_url: width: block.settings.image.width
+                      assign image_alt = block.settings.step_title | escape
+                      assign image_extension = block.settings.image | image_url | split: '.' | last | split: '?' | first | downcase
+                    -%}
+                    {%- if image_extension == 'gif' -%}
+                      <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ image_alt }}" class="how-it-works__circle-image" loading="{{ loading_strategy }}">
+                    {%- else -%}
+                      {%- capture sizes -%}(max-width: 699px) var(--circle-size-mobile), var(--circle-size-desktop){%- endcapture -%}
+                      {%- capture widths -%}200,240,280,320,400{%- endcapture -%}
+                      {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, class: 'how-it-works__circle-image', alt: image_alt -}}
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+
+                <div class="v-stack gap-2">
+                  {%- if block.settings.step_number != blank -%}
+                    <p class="how-it-works__step-number">STEP {{ block.settings.step_number }}</p>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.step_title != blank -%}
+                    <h3 class="how-it-works__step-title">{{ block.settings.step_title | escape }}</h3>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank -%}
+          <div class="how-it-works__button-wrapper">
+            {%- render 'button', href: section.settings.button_url, content: section.settings.button_text, size: 'lg', background: section.settings.button_background, text_color: section.settings.button_text_color, style: section.settings.button_style -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How it works",
+  "class": "shopify-section--how-it-works",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended: 600 x 600px .jpg, .png or .gif (GIFs supported)"
+        },
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step title",
+          "default": "Step title"
+        },
+        {
+          "type": "color",
+          "id": "circle_background",
+          "label": "Circle background color",
+          "info": "Optional background color for the circle"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "HOW IT WORKS"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "X-Large"
+        },
+        {
+          "value": "h2",
+          "label": "Large"
+        },
+        {
+          "value": "h3",
+          "label": "Medium"
+        },
+        {
+          "value": "h4",
+          "label": "Small"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "gap",
+      "label": "Gap spacing",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "x-large",
+          "label": "X-Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "GET STARTED"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "circle_border_color",
+      "label": "Circle border color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "step_number_color",
+      "label": "Step number color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "title_underline_color",
+      "label": "Title underline color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "1",
+            "step_title": "SEND US YOUR PHOTOS"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "2",
+            "step_title": "TURN INTO A YELLOW CHARACTER"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "3",
+            "step_title": "RECEIVE YOUR DRAWING AND SURPRISE LOVED ONES!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

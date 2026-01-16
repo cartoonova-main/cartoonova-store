@@ -1,0 +1,541 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --hero-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --hero-min-height: {{ section.settings.min_height }}px;
+    --hero-min-height-mobile: {{ section.settings.min_height_mobile }}px;
+  }
+
+  .hero-banner {
+    position: relative;
+    min-height: var(--hero-min-height-mobile);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-banner {
+      min-height: var(--hero-min-height);
+    }
+  }
+
+  .hero-banner__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    display: block;
+  }
+
+  .hero-banner__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero-overlay);
+    z-index: 1;
+  }
+
+  .hero-banner__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-12) var(--container-gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--hero-min-height-mobile);
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-banner__content {
+      padding: var(--spacing-16) var(--container-gutter);
+      min-height: var(--hero-min-height);
+    }
+  }
+
+  .hero-banner__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: center;
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-banner__buttons {
+      flex-direction: row;
+      gap: var(--spacing-6);
+    }
+  }
+
+  .hero-banner__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .hero-banner__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+  }
+
+  .hero-banner__button:active {
+    transform: translateY(0);
+  }
+
+  .hero-banner__button-icon {
+    flex-shrink: 0;
+    stroke-width: 2;
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="hero-banner">
+    {%- if section.settings.image != blank -%}
+      {%- liquid
+        assign loading_strategy = 'eager'
+        if section.index > 1
+          assign loading_strategy = 'lazy'
+        endif
+        assign image_alt = 'Hero banner' | escape
+        assign image_extension = section.settings.image | image_url | split: '.' | last | split: '?' | first | downcase
+      -%}
+      {%- if image_extension == 'gif' -%}
+        <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="{{ image_alt }}" class="hero-banner__image" loading="{{ loading_strategy }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}">
+      {%- else -%}
+        {%- capture sizes -%}100vw{%- endcapture -%}
+        {%- capture widths -%}400,600,800,1000,1200,1400,1600,2000,2400,2800,3200{%- endcapture -%}
+        {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: loading_strategy, sizes: sizes, widths: widths, class: 'hero-banner__image', alt: image_alt, fetchpriority: 'high' -}}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if section.settings.overlay_opacity > 0 -%}
+      <div class="hero-banner__overlay"></div>
+    {%- endif -%}
+    
+    <div class="hero-banner__content">
+      {%- if section.settings.shop_button_text != blank or section.settings.contact_button_text != blank -%}
+        <div class="hero-banner__buttons">
+          {%- if section.settings.shop_button_text != blank -%}
+            <a href="{{ section.settings.shop_button_url }}" class="hero-banner__button hero-banner__button--shop" style="
+              background: {{ section.settings.shop_button_background }};
+              color: {{ section.settings.shop_button_text_color }};
+              border: {{ section.settings.shop_button_border_width }}px solid {{ section.settings.shop_button_border_color }};
+              border-radius: {{ section.settings.shop_button_border_radius }}px;
+              padding: {{ section.settings.shop_button_padding_vertical }}px {{ section.settings.shop_button_padding_horizontal }}px;
+              font-size: {{ section.settings.shop_button_font_size }}px;
+              min-width: {{ section.settings.shop_button_min_width }}px;
+            ">
+              <span>{{ section.settings.shop_button_text | escape }}</span>
+              {%- if section.settings.shop_button_show_icon -%}
+                <svg class="hero-banner__button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: {{ section.settings.shop_button_icon_size }}px; height: {{ section.settings.shop_button_icon_size }}px;">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.contact_button_text != blank -%}
+            <a href="{{ section.settings.contact_button_url }}" class="hero-banner__button hero-banner__button--contact" style="
+              background: {{ section.settings.contact_button_background }};
+              color: {{ section.settings.contact_button_text_color }};
+              border: {{ section.settings.contact_button_border_width }}px solid {{ section.settings.contact_button_border_color }};
+              border-radius: {{ section.settings.contact_button_border_radius }}px;
+              padding: {{ section.settings.contact_button_padding_vertical }}px {{ section.settings.contact_button_padding_horizontal }}px;
+              font-size: {{ section.settings.contact_button_font_size }}px;
+              min-width: {{ section.settings.contact_button_min_width }}px;
+            ">
+              <span>{{ section.settings.contact_button_text | escape }}</span>
+              {%- if section.settings.contact_button_show_icon -%}
+                <svg class="hero-banner__button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: {{ section.settings.contact_button_icon_size }}px; height: {{ section.settings.contact_button_icon_size }}px;">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "class": "shopify-section--hero-banner",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Recommended: 1200 x 1200px .jpg, .png or .gif (GIFs supported)"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position (desktop)",
+      "options": [
+        {
+          "value": "1",
+          "label": "Left"
+        },
+        {
+          "value": "2",
+          "label": "Right"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "TURN ME YELLOW"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The ORIGINAL and still the BEST place to get yourself Simpsonized"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment (desktop)",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position (desktop)",
+      "options": [
+        {
+          "value": "1",
+          "label": "Left"
+        },
+        {
+          "value": "2",
+          "label": "Right"
+        }
+      ],
+      "default": "2",
+      "info": "Position of text content relative to image"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Minimum height (desktop)",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Minimum height (mobile)",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Shop Button"
+    },
+    {
+      "type": "text",
+      "id": "shop_button_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "shop_button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "shop_button_background",
+      "label": "Background color",
+      "default": "#FF6B9D"
+    },
+    {
+      "type": "color",
+      "id": "shop_button_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "shop_button_border_color",
+      "label": "Border color",
+      "default": "#FF6B9D"
+    },
+    {
+      "type": "range",
+      "id": "shop_button_border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "shop_button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "shop_button_padding_vertical",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "shop_button_padding_horizontal",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "shop_button_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "shop_button_min_width",
+      "min": 100,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "label": "Minimum width",
+      "default": 180
+    },
+    {
+      "type": "checkbox",
+      "id": "shop_button_show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "shop_button_icon_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Contact Button"
+    },
+    {
+      "type": "text",
+      "id": "contact_button_text",
+      "label": "Button text",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "url",
+      "id": "contact_button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "contact_button_background",
+      "label": "Background color",
+      "default": "#3B82F6"
+    },
+    {
+      "type": "color",
+      "id": "contact_button_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "contact_button_border_color",
+      "label": "Border color",
+      "default": "#3B82F6"
+    },
+    {
+      "type": "range",
+      "id": "contact_button_border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "contact_button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "contact_button_padding_vertical",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "contact_button_padding_horizontal",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "contact_button_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "contact_button_min_width",
+      "min": 100,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "label": "Minimum width",
+      "default": 180
+    },
+    {
+      "type": "checkbox",
+      "id": "contact_button_show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "contact_button_icon_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner",
+      "settings": {
+        "shop_button_text": "SHOP NOW",
+        "contact_button_text": "GET IN TOUCH"
+      }
+    }
+  ]
+}
+{% endschema %}
