@@ -287,6 +287,7 @@
     },
     "scrolling-text": {
       "type": "scrolling-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "text": "Promotion text",
@@ -351,6 +352,7 @@
         "collection-2",
         "collection-3"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_collections": false,
@@ -373,17 +375,19 @@
       "type": "featured-collection",
       "settings": {
         "collection": "",
-        "products": [],
+        "products": [
+          "simpsons"
+        ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
+        "products_count": 2,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 2,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "Turn Me Yellow !",
         "content": "",
-        "link_url": "",
+        "link_url": "shopify://products/simpsons",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
