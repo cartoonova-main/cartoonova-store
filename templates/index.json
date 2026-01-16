@@ -11,6 +11,7 @@
   "sections": {
     "hero-banner": {
       "type": "hero-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "image_position": "1",
@@ -18,14 +19,36 @@
         "subtitle": "The ORIGINAL and still the BEST place to get yourself Simpsonized",
         "text_alignment": "center",
         "text_position": "2",
+        "min_height": 600,
+        "min_height_mobile": 400,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
         "shop_button_text": "SHOP NOW",
         "shop_button_url": "",
-        "shop_button_background": "#FF6B9D",
-        "shop_button_text_color": "#FFFFFF",
+        "shop_button_background": "#ff6b9d",
+        "shop_button_text_color": "#ffffff",
+        "shop_button_border_color": "#ff6b9d",
+        "shop_button_border_width": 2,
+        "shop_button_border_radius": 8,
+        "shop_button_padding_vertical": 16,
+        "shop_button_padding_horizontal": 32,
+        "shop_button_font_size": 16,
+        "shop_button_min_width": 180,
+        "shop_button_show_icon": true,
+        "shop_button_icon_size": 20,
         "contact_button_text": "GET IN TOUCH",
         "contact_button_url": "",
-        "contact_button_background": "#3B82F6",
-        "contact_button_text_color": "#FFFFFF"
+        "contact_button_background": "#3b82f6",
+        "contact_button_text_color": "#ffffff",
+        "contact_button_border_color": "#3b82f6",
+        "contact_button_border_width": 2,
+        "contact_button_border_radius": 8,
+        "contact_button_padding_vertical": 16,
+        "contact_button_padding_horizontal": 32,
+        "contact_button_font_size": 16,
+        "contact_button_min_width": 180,
+        "contact_button_show_icon": true,
+        "contact_button_icon_size": 20
       }
     },
     "slideshow": {
@@ -79,12 +102,13 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "show_initial_transition": false,
         "image_size": "auto",
         "controls_type": "numbers",
         "transition_type": "fade_with_text",
         "autoplay": true,
         "cycle_speed": 6,
-        "background": "#F2F2F2",
+        "background": "#f2f2f2",
         "background_gradient": "linear-gradient(60deg, rgba(60, 65, 68, 1), rgba(23, 29, 33, 1) 98%)"
       }
     },
@@ -95,21 +119,24 @@
           "type": "step",
           "settings": {
             "step_number": "1",
-            "step_title": "SEND US YOUR PHOTOS"
+            "step_title": "SEND US YOUR PHOTOS",
+            "circle_background": ""
           }
         },
         "step-2": {
           "type": "step",
           "settings": {
             "step_number": "2",
-            "step_title": "TURN INTO A YELLOW CHARACTER"
+            "step_title": "TURN INTO A YELLOW CHARACTER",
+            "circle_background": ""
           }
         },
         "step-3": {
           "type": "step",
           "settings": {
             "step_number": "3",
-            "step_title": "RECEIVE YOUR DRAWING AND SURPRISE LOVED ONES!"
+            "step_title": "RECEIVE YOUR DRAWING AND SURPRISE LOVED ONES!",
+            "circle_background": ""
           }
         }
       },
@@ -126,11 +153,11 @@
         "button_text": "GET STARTED",
         "button_url": "",
         "button_style": "fill",
-        "button_background": "#FFD700",
+        "button_background": "#ffd700",
         "button_text_color": "#000000",
-        "circle_border_color": "#FFD700",
-        "step_number_color": "#FFD700",
-        "title_underline_color": "#FFD700",
+        "circle_border_color": "#ffd700",
+        "step_number_color": "#ffd700",
+        "title_underline_color": "#ffd700",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -142,16 +169,17 @@
         "step-1": {
           "type": "step",
           "settings": {
+            "image_position": "left",
             "step_number": "1",
             "step_title": "CHOOSE THE NUMBER OF PEOPLE AND PETS",
             "step_text": "<p>Select the number of cartoon characters you would like in your drawing.</p><p>Don't forget to count your pets if you have any, as they are a part of the family!</p>",
             "button_text": "GET STARTED",
             "button_url": "",
             "button_style": "fill",
-            "button_background": "#FFD700",
+            "button_background": "#ffd700",
             "button_text_color": "#000000",
-            "left_panel_background": "#FFB6C1",
-            "right_panel_background": "#FFFACD"
+            "left_panel_background": "#ffb6c1",
+            "right_panel_background": "#fffacd"
           }
         }
       },
@@ -162,10 +190,10 @@
         "full_width": true,
         "title": "PERSONALIZE YOUR DRAWING",
         "heading_tag": "h2",
-        "title_underline_color": "#FFD700",
-        "step_number_color": "#FFD700",
-        "left_panel_background": "#FFB6C1",
-        "right_panel_background": "#FFFACD",
+        "title_underline_color": "#ffd700",
+        "step_number_color": "#ffd700",
+        "left_panel_background": "#ffb6c1",
+        "right_panel_background": "#fffacd",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -326,6 +354,7 @@
       "settings": {
         "full_width": true,
         "stack_collections": false,
+        "collections_per_row_mobile": "1",
         "collections_per_row": 3,
         "show_progress_bar": false,
         "subheading": "",
@@ -538,6 +567,7 @@
         "full_width": true,
         "reduce_width": false,
         "desktop_row_height": 290,
+        "mobile_row_height": 150,
         "background": "",
         "background_gradient": ""
       }
@@ -559,7 +589,9 @@
         "background_gradient": "",
         "text_color": "",
         "before_text_color": "#ffffff",
-        "after_text_color": "#ffffff"
+        "after_text_color": "#ffffff",
+        "drag_cursor_background": "#ffffff",
+        "drag_cursor_color": "#000000"
       }
     },
     "press": {
@@ -746,6 +778,8 @@
         "description": {
           "type": "description",
           "settings": {
+            "icon": "none",
+            "icon_width": 20,
             "collapse_content": false
           }
         },
@@ -756,6 +790,7 @@
             "stack_blocks": true,
             "selector_style": "block",
             "swatch_selector_style": "color",
+            "variant_image_options": "",
             "size_chart_page": ""
           }
         },
@@ -767,6 +802,7 @@
           "type": "buy_buttons",
           "settings": {
             "show_payment_button": true,
+            "show_gift_card_recipient": true,
             "atc_button_background": "",
             "atc_button_text_color": "",
             "payment_button_background": "",
