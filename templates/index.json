@@ -57,11 +57,12 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "content_max_width": 780,
+            "image": "shopify://shop_images/Happy-New-Year-Desktop-Banner.jpg",
+            "content_max_width": 1200,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "Tell your story",
-            "title": "Slide title",
+            "subheading": "",
+            "title": "",
             "heading_tag": "h0",
             "button_text": "",
             "button_link": "",
@@ -99,6 +100,7 @@
         "slide-1",
         "slide-2"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -184,10 +186,79 @@
             "left_panel_background": "#ffb6c1",
             "right_panel_background": "#fffacd"
           }
+        },
+        "step_gK8ipY": {
+          "type": "step",
+          "settings": {
+            "image_position": "left",
+            "step_number": "2",
+            "step_title": "Select your drawing type",
+            "step_text": "<p>Select the number of cartoon characters you would like in your drawing.</p><p>Don't forget to count your pets if you have any, as they are a part of the family!</p>",
+            "button_text": "TURN YELLOW",
+            "button_url": "",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "#ffb6c1",
+            "right_panel_background": "#fffacd"
+          }
+        },
+        "step_QqXMtz": {
+          "type": "step",
+          "disabled": true,
+          "settings": {
+            "image_position": "left",
+            "step_number": "3",
+            "step_title": "CHOOSE THE NUMBER OF PEOPLE AND PETS",
+            "step_text": "<p>Select the number of cartoon characters you would like in your drawing.</p><p>Don't forget to count your pets if you have any, as they are a part of the family!</p>",
+            "button_text": "GET STARTED",
+            "button_url": "",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "#ffb6c1",
+            "right_panel_background": "#fffacd"
+          }
+        },
+        "step_pb8fAK": {
+          "type": "step",
+          "settings": {
+            "image_position": "left",
+            "step_number": "1",
+            "step_title": "Pick your Background",
+            "step_text": "<p>Select the number of cartoon characters you would like in your drawing.</p><p>Don't forget to count your pets if you have any, as they are a part of the family!</p>",
+            "button_text": "GET STARTED",
+            "button_url": "",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "",
+            "right_panel_background": ""
+          }
+        },
+        "step_Wiz7PH": {
+          "type": "step",
+          "settings": {
+            "image_position": "left",
+            "step_number": "Optional",
+            "step_title": "Print your artwork",
+            "step_text": "<p><strong>Complete your gift by having it printed!<br/>Use your digital artwork to print it at a local shop or order a print from us and we will handle all the work.</strong></p>",
+            "button_text": "GO TO PRINTS",
+            "button_url": "",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "#ffb6c1",
+            "right_panel_background": "#fffacd"
+          }
         }
       },
       "block_order": [
-        "step-1"
+        "step-1",
+        "step_gK8ipY",
+        "step_QqXMtz",
+        "step_pb8fAK",
+        "step_Wiz7PH"
       ],
       "settings": {
         "full_width": true,
@@ -208,6 +279,7 @@
         "1664424046b00c932c-0": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/portrait-personnalise-simpsons-2396016.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -220,6 +292,7 @@
         "1664424046b00c932c-1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/portrait-personnalise-simpsons-2241201.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -232,6 +305,7 @@
         "1664424046b00c932c-2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/portrait-personnalise-simpsons-2683494.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -244,6 +318,7 @@
         "1664424046b00c932c-3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/portrait-personnalise-simpsons-6443717.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -255,6 +330,7 @@
         },
         "e4a0ef18-1856-4ddd-83d8-871a60d7acac": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "stretch_image": true,
             "link_text": "",
@@ -573,6 +649,7 @@
         "item-3",
         "29246d34-c6e0-4373-84f6-b15e57736a00"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "reduce_width": false,
@@ -584,6 +661,7 @@
     },
     "before-after-image": {
       "type": "before-after-image",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "",
