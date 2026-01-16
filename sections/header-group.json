@@ -17,13 +17,29 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here",
-            "url": ""
+            "text": "⏱️ PREVIEW IN 48 HRS",
+            "url": "shopify://products/simpsons"
+          }
+        },
+        "message_AEXMQe": {
+          "type": "message",
+          "settings": {
+            "text": "🚀 UNLIMITED FREE REVISIONS",
+            "url": "shopify://products/simpsons"
+          }
+        },
+        "message_7iD6Dp": {
+          "type": "message",
+          "settings": {
+            "text": "✈️ FREE SHIPPING WORLDWIDE",
+            "url": "shopify://products/simpsons"
           }
         }
       },
       "block_order": [
-        "message"
+        "message",
+        "message_AEXMQe",
+        "message_7iD6Dp"
       ],
       "settings": {
         "enable_sticky": false,
