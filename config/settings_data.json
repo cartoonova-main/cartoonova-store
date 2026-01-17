@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "section_vertical_spacing": "medium",
+    "page_width": 1300,
+    "section_vertical_spacing": "xsmall",
     "button_border_radius": 60,
     "input_border_radius": 8,
     "block_border_radius": 24,
@@ -35,6 +36,7 @@
     "product_color_display": "swatch",
     "product_info_alignment": "start",
     "cart_icon": "shopping_basket",
+    "favicon": "shopify://shop_images/strawberry.png",
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
     "content_for_index": [],
