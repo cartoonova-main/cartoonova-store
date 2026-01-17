@@ -43,6 +43,11 @@
         "type": "shopify://apps/epa-easy-product-addons/blocks/speedup_link/0099190e-a0cb-49e7-8d26-026c9d26f337",
         "disabled": false,
         "settings": {}
+      },
+      "4981902369724952902": {
+        "type": "shopify://apps/vo-product-options/blocks/embed-block/430cbd7b-bd20-4c16-ba41-db6f4c645164",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
