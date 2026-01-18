@@ -127,6 +127,7 @@
     },
     "hero_with_image_ABFWQh": {
       "type": "hero-with-image",
+      "disabled": true,
       "name": "Hero with image",
       "settings": {
         "eyebrow": "🎨 Hand-Drawn by Real Artists",
