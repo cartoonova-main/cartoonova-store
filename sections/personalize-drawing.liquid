@@ -210,7 +210,7 @@
                 <div class="personalize-drawing__step-content" style="{% if block.settings.right_panel_background != blank %}background: {{ block.settings.right_panel_background }};{% endif %}">
                   <div class="v-stack gap-4">
                     {%- if block.settings.step_number != blank -%}
-                      <p class="personalize-drawing__step-number">STEP {{ block.settings.step_number }}</p>
+                      <p class="personalize-drawing__step-number">{{ block.settings.step_number }}</p>
                     {%- endif -%}
                     
                     {%- if block.settings.step_title != blank -%}
