@@ -175,7 +175,7 @@
           "settings": {
             "image": "shopify://shop_images/couch-fullbody.jpg",
             "image_position": "left",
-            "step_number": "1",
+            "step_number": "Step 1",
             "step_title": "CHOOSE THE NUMBER OF PEOPLE AND PETS",
             "step_text": "<p>Select the number of cartoon characters you would like in your drawing.</p><p>Don't forget to count your pets if you have any, as they are a part of the family!</p>",
             "button_text": "GET STARTED",
@@ -192,7 +192,7 @@
           "settings": {
             "image": "shopify://shop_images/full-body-half-body-1536x814.png",
             "image_position": "left",
-            "step_number": "2",
+            "step_number": "Step 2",
             "step_title": "Select your drawing type",
             "step_text": "<p>Choose Full Body drawing type for full body drawings and choose Half Body drawing type for portrait style drawings.</p><p>Both work great, so pick to your liking!</p>",
             "button_text": "GET STARTED",
@@ -203,11 +203,65 @@
             "left_panel_background": "#f0f0f0",
             "right_panel_background": ""
           }
+        },
+        "step_HeXL3y": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/11050-scaled-2.jpg",
+            "image_position": "left",
+            "step_number": "Step 3",
+            "step_title": "Pick your Background",
+            "step_text": "<p>Choose from over 8 themed backgrounds we have prepared for you or customize your own scene. Let loose your wildest imagination or simply have a photo turned into a cartoon with the Custom background option.</p><p>Have fun with it! </p>",
+            "button_text": "Start My Portrait !",
+            "button_url": "shopify://products/simpsons",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "",
+            "right_panel_background": ""
+          }
+        },
+        "step_DxMEQQ": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/full_body_couch5-11.jpg",
+            "image_position": "left",
+            "step_number": "Final step",
+            "step_title": "Give us more details",
+            "step_text": "<p>The fun is in the details! Further customize your drawing by providing more details in the Notes section. Have your loved ones in their favorite clothes or holding their favorite drink. Have your family name inscribed in your drawing for an even more fun gift! </p>",
+            "button_text": "GET STARTED",
+            "button_url": "shopify://products/simpsons",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "",
+            "right_panel_background": ""
+          }
+        },
+        "step_LUEUx7": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/orta.jpg",
+            "image_position": "left",
+            "step_number": "Optional",
+            "step_title": "Print your artwork",
+            "step_text": "<p><strong>Complete your gift by having it printed!Use your digital artwork to print it at a local shop or order a print from us and we will handle all the work.</strong></p>",
+            "button_text": "GET STARTED",
+            "button_url": "shopify://products/simpsons",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "",
+            "right_panel_background": ""
+          }
         }
       },
       "block_order": [
         "step-1",
-        "step_mLXW9q"
+        "step_mLXW9q",
+        "step_HeXL3y",
+        "step_DxMEQQ",
+        "step_LUEUx7"
       ],
       "settings": {
         "full_width": true,
