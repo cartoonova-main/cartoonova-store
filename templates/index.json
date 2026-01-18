@@ -214,6 +214,7 @@
         },
         "step_mLXW9q": {
           "type": "step",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/full-body-half-body-1536x814.png",
             "image_position": "left",
@@ -234,7 +235,7 @@
           "settings": {
             "image": "shopify://shop_images/11050-scaled-2.jpg",
             "image_position": "left",
-            "step_number": "Step 3",
+            "step_number": "Step 2",
             "step_title": "Pick your Background",
             "step_text": "<p>Choose from over 8 themed backgrounds we have prepared for you or customize your own scene. Let loose your wildest imagination or simply have a photo turned into a cartoon with the Custom background option.</p><p>Have fun with it! </p>",
             "button_text": "Start My Portrait !",
