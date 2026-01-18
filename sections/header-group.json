@@ -33,6 +33,9 @@
         "transparent_header_text_color": "#ffffff",
         "transparent_logo": "shopify://shop_images/simson-product.png",
         "reduce_padding": true,
+        "logo_overlay": false,
+        "logo_overlay_scale": 180,
+        "logo_overlay_offset": 50,
         "background_opacity": 100,
         "background_blur_radius": 0
       }
@@ -67,6 +70,7 @@
         "message_AEXMQe",
         "message_7iD6Dp"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky": false,
         "autoplay": false,
@@ -78,10 +82,78 @@
         "background_gradient": "",
         "text_color": "#ffffff"
       }
+    },
+    "top_info_bar_UALT7Q": {
+      "type": "top-info-bar",
+      "blocks": {
+        "top_info_item_U8J6rH": {
+          "type": "top_info_item",
+          "settings": {
+            "text": "Announcement",
+            "url": ""
+          }
+        },
+        "top_info_item_RYyURQ": {
+          "type": "top_info_item",
+          "settings": {
+            "text": "Announcement",
+            "url": ""
+          }
+        },
+        "top_info_item_i7ikAB": {
+          "type": "top_info_item",
+          "settings": {
+            "text": "Announcement",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "top_info_item_U8J6rH",
+        "top_info_item_RYyURQ",
+        "top_info_item_i7ikAB"
+      ],
+      "name": "Top info bar",
+      "settings": {
+        "enable_sticky": false,
+        "min_height": 32,
+        "padding_vertical": 6,
+        "text_size": "text-xs",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "divider_color": ""
+      }
+    },
+    "hero_with_image_ABFWQh": {
+      "type": "hero-with-image",
+      "name": "Hero with image",
+      "settings": {
+        "eyebrow": "🎨 Hand-Drawn by Real Artists",
+        "title": "Turn Your Favorite People into",
+        "title_highlight": "Yellow Cartoon Portraits",
+        "description": "A real artist draws your custom portrait by hand, capturing personality and special details AI can't truly replicate.",
+        "button_text": "Start My Portrait",
+        "button_url": "",
+        "benefit_1": "Preview in 2-3 days",
+        "benefit_2": "Unlimited Revisions",
+        "benefit_3": "Upload Any Photo",
+        "background": "#ffffff",
+        "text_color": "#4b5563",
+        "eyebrow_color": "#b45309",
+        "title_color": "#1f2937",
+        "highlight_color": "#d4a017",
+        "button_background": "#d4a017",
+        "button_text_color": "#1a1a1a",
+        "button_border_radius": 8,
+        "benefit_icon_color": "#d4a017"
+      }
     }
   },
   "order": [
     "header",
-    "announcement-bar"
+    "announcement-bar",
+    "top_info_bar_UALT7Q",
+    "hero_with_image_ABFWQh"
   ]
 }
