@@ -13,8 +13,12 @@
     {%- endif -%}
 
     #shopify-section-{{ section.id }} .top-info-bar {
-      min-height: {{ section.settings.min_height | default: 32 }}px;
-      padding-block: {{ section.settings.padding_vertical | default: 6 }}px;
+      min-height: {{ section.settings.min_height | default: 40 }}px;
+      padding-block: {{ section.settings.padding_vertical | default: 8 }}px;
+      background: {{ section.settings.background | default: '#FFD800' }};
+      color: {{ section.settings.text_color | default: '#1a1a1a' }};
+      border-bottom: 3px solid {{ section.settings.border_color | default: '#e6c200' }};
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     #shopify-section-{{ section.id }} .top-info-bar__wrapper {
@@ -22,43 +26,103 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       align-items: center;
       text-align: center;
+      gap: var(--spacing-4);
     }
 
     #shopify-section-{{ section.id }} .top-info-bar__item {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: var(--spacing-2);
-      min-height: {{ section.settings.min_height | default: 32 }}px;
+      gap: 8px;
+      min-height: {{ section.settings.min_height | default: 40 }}px;
       padding-inline: var(--spacing-4);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease;
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item:hover {
+      transform: scale(1.03);
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #shopify-section-{{ section.id }} .top-info-bar__item + .top-info-bar__item {
-      border-left: 1px solid {{ section.settings.divider_color | default: 'rgba(255,255,255,0.35)' }};
+      border-left: 2px solid {{ section.settings.divider_color | default: 'rgba(0,0,0,0.15)' }};
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     @media screen and (max-width: 749px) {
       #shopify-section-{{ section.id }} .top-info-bar__wrapper {
         grid-template-columns: 1fr;
+        gap: var(--spacing-2);
       }
 
       #shopify-section-{{ section.id }} .top-info-bar__item + .top-info-bar__item {
         border-left: 0;
+        border-top: 1px solid {{ section.settings.divider_color | default: 'rgba(0,0,0,0.1)' }};
+        padding-top: var(--spacing-2);
+      }
+
+      #shopify-section-{{ section.id }} .top-info-bar__item {
+        min-height: auto;
+        padding-block: 4px;
       }
     }
   </style>
 
-  <div {% render 'surface', class: 'top-info-bar', background: section.settings.background, background_gradient: section.settings.background_gradient, text_color: section.settings.text_color %}>
+  <div class="top-info-bar">
     <div class="container">
       <div class="top-info-bar__wrapper">
         {%- for block in section.blocks limit: 3 -%}
-          <div class="top-info-bar__item bold {{ section.settings.text_size }}" {{ block.shopify_attributes }}>
+          <div class="top-info-bar__item {{ section.settings.text_size }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != 'none' -%}
+              <span class="top-info-bar__item-icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'clock' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {%- when 'check' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {%- when 'truck' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                  {%- when 'star' -%}
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  {%- when 'heart' -%}
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  {%- when 'gift' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                  {%- when 'brush' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg>
+                {%- endcase -%}
+              </span>
+            {%- endif -%}
+
             {%- if block.settings.url != blank -%}
-              <a href="{{ block.settings.url }}" style="color: inherit; text-decoration: none;">
+              <a href="{{ block.settings.url }}">
                 {{ block.settings.text | escape }}
               </a>
             {%- else -%}
-              {{ block.settings.text | escape }}
+              <span>{{ block.settings.text | escape }}</span>
             {%- endif -%}
           </div>
         {%- endfor -%}
@@ -81,6 +145,22 @@
       "type": "top_info_item",
       "name": "Item",
       "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "clock", "label": "⏱️ Clock" },
+            { "value": "check", "label": "✅ Check" },
+            { "value": "truck", "label": "🚚 Truck" },
+            { "value": "star", "label": "⭐ Star" },
+            { "value": "heart", "label": "❤️ Heart" },
+            { "value": "gift", "label": "🎁 Gift" },
+            { "value": "brush", "label": "🎨 Brush" }
+          ],
+          "default": "none"
+        },
         {
           "type": "text",
           "id": "text",
@@ -158,6 +238,12 @@
       "type": "color",
       "id": "divider_color",
       "label": "Divider"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Bottom border",
+      "default": "#e6c200"
     }
   ],
   "presets": [
