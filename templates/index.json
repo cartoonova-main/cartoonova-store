@@ -173,6 +173,7 @@
         "step-1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/couch-fullbody.jpg",
             "image_position": "left",
             "step_number": "1",
             "step_title": "CHOOSE THE NUMBER OF PEOPLE AND PETS",
@@ -185,10 +186,28 @@
             "left_panel_background": "#ffb6c1",
             "right_panel_background": "#fffacd"
           }
+        },
+        "step_mLXW9q": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/full-body-half-body-1536x814.png",
+            "image_position": "left",
+            "step_number": "2",
+            "step_title": "Select your drawing type",
+            "step_text": "<p>Choose Full Body drawing type for full body drawings and choose Half Body drawing type for portrait style drawings.</p><p>Both work great, so pick to your liking!</p>",
+            "button_text": "GET STARTED",
+            "button_url": "shopify://products/simpsons",
+            "button_style": "fill",
+            "button_background": "#ffd700",
+            "button_text_color": "#000000",
+            "left_panel_background": "#f0f0f0",
+            "right_panel_background": ""
+          }
         }
       },
       "block_order": [
-        "step-1"
+        "step-1",
+        "step_mLXW9q"
       ],
       "settings": {
         "full_width": true,
