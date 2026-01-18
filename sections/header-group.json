@@ -89,22 +89,22 @@
         "top_info_item_U8J6rH": {
           "type": "top_info_item",
           "settings": {
-            "text": "Announcement",
-            "url": ""
+            "text": "⏱️ PREVIEW IN 48 HRS",
+            "url": "shopify://products/simpsons"
           }
         },
         "top_info_item_RYyURQ": {
           "type": "top_info_item",
           "settings": {
-            "text": "Announcement",
-            "url": ""
+            "text": "🚀 UNLIMITED FREE REVISIONS",
+            "url": "shopify://products/simpsons"
           }
         },
         "top_info_item_i7ikAB": {
           "type": "top_info_item",
           "settings": {
-            "text": "Announcement",
-            "url": ""
+            "text": "✈️ FREE SHIPPING WORLDWIDE",
+            "url": "shopify://products/simpsons"
           }
         }
       },
