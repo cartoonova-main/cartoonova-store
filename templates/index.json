@@ -916,6 +916,7 @@
         "quantity-selector",
         "buy-buttons"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "product": "",
@@ -940,27 +941,35 @@
         "166442457738b23caf-0": {
           "type": "item",
           "settings": {
-            "title": "What is your return policy?",
-            "content": "<p>Use this section to describe your return policy.</p>"
+            "title": "How long will it take to get my order?",
+            "content": "<p><strong>Digital:</strong></p><p>Your digital orders usually take between 2 to 4 days to deliver.</p><p><strong>Prints:</strong></p><p>Your print orders take around 2-3 days to print and ship. You will receive your print within 5-7 business days after shipping.</p>"
+          }
+        },
+        "item_TGkabD": {
+          "type": "item",
+          "settings": {
+            "title": "How will I receive my order?",
+            "content": "<p>We will send you your high-resolution digital image via email.</p><p>If you have ordered a print, it will be delivered by free shipping.</p>"
           }
         },
         "166442457738b23caf-1": {
           "type": "item",
           "settings": {
-            "title": "How long does shipping take?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+            "title": "What if I am not happy with my order?",
+            "content": "<p>We are all quality-first, meaning we work with the best artists to make your gift the “perfect” one. But if for some reason you are still unsatisfied, you have the right to ask for revisions of your drawing until you are entirely happy with the result.</p><p>*Note that revisions are small changes in your drawing such as the colors, poses etc. Revisions are not complete redos of your work, so we won’t be able to add a large object or a person. If you would like to make such additions, these could result in additional charges. This is why we need you to be very specific when you write up your notes.</p>"
           }
         },
         "166442457738b23caf-2": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "title": "Do animals, cars etc. count as people?",
+            "content": "<p>Yes. Because animals and complex objects which are difficult to draw and take a long time. Don’t think your puppy, who is 1/20 your size, is an easy task!</p>"
           }
         }
       },
       "block_order": [
         "166442457738b23caf-0",
+        "item_TGkabD",
         "166442457738b23caf-1",
         "166442457738b23caf-2"
       ],
@@ -968,12 +977,13 @@
         "full_width": false,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "content": "",
+        "team_avatar": "shopify://shop_images/simson-product.png",
         "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "button_text": "",
-        "button_url": "",
+        "support_hours": "Our customer support team is available every day to assist you.",
+        "answer_time": "Average answer time: 2h",
+        "button_text": "Contact",
+        "button_url": "shopify://pages/contact",
         "text_position": "start",
         "background": "#ffffff",
         "background_gradient": "",
