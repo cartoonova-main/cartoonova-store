@@ -55,6 +55,11 @@
         "type": "shopify://apps/uploadly-file-upload/blocks/app-embed/d91e9a53-de3d-49df-b7a1-ac8a15b213e5",
         "disabled": false,
         "settings": {}
+      },
+      "5918707185744429496": {
+        "type": "shopify://apps/optis-product-options/blocks/bss-po-script/2c446099-c349-4e73-80cd-49c9770b7807",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
