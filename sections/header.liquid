@@ -14,20 +14,52 @@
 
   #shopify-section-{{ section.id }} {
     --header-grid-template: "main-nav logo secondary-nav" / minmax(0, 1fr) auto minmax(0, 1fr);
-    --header-padding-block: {% if section.settings.reduce_padding %}var(--spacing-3){% else %}var(--spacing-4-5){% endif %};
+    --header-padding-block: {% if section.settings.reduce_padding %}4px{% else %}var(--spacing-4-5){% endif %};
     --header-background-opacity: {{ section.settings.background_opacity | divided_by: 100.0 }};
     --header-background-blur-radius: {{ section.settings.background_blur_radius }}px;
     --header-transparent-text-color: {{ section.settings.transparent_header_text_color.rgb }};
 
+    {%- if section.settings.logo_overlay -%}
+      --header-logo-overlay-scale: {{ section.settings.logo_overlay_scale | divided_by: 100.0 }};
+      --header-logo-overlay-offset: {{ section.settings.logo_overlay_offset | minus: 40 }}px;
+    {%- endif -%}
+
     {%- if section.settings.logo != blank -%}
-      --header-logo-width: {{ section.settings.logo_mobile_max_width }}px;
-      --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
+      --header-logo-width: {% if section.settings.reduce_padding %}{{ section.settings.logo_mobile_max_width | at_most: 52 }}{% else %}{{ section.settings.logo_mobile_max_width }}{% endif %}px;
+      --header-logo-height: {% if section.settings.reduce_padding %}{{ section.settings.logo_mobile_max_width | at_most: 52 | divided_by: section.settings.logo.aspect_ratio | round }}{% else %}{{ section.settings.logo_mobile_max_width | divided_by: section.settings.logo.aspect_ratio | round }}{% endif %}px;
     {%- endif -%}
 
     position: {% if section.settings.enable_sticky %}sticky{% else %}relative{% endif %};
     top: 0;
     z-index: 10;
   }
+
+  {%- if section.settings.logo_overlay -%}
+    #shopify-section-{{ section.id }} .header__wrapper {
+      position: relative;
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .header__logo {
+      position: relative;
+      z-index: 30;
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .header__logo > a {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(var(--header-logo-overlay-offset)) scale(var(--header-logo-overlay-scale));
+      transform-origin: center;
+      display: block;
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .header__logo-image {
+      max-width: none;
+    }
+  {%- endif -%}
 
   {%- if section.settings.enable_sticky -%}
     .shopify-section--announcement-bar ~ #shopify-section-{{ section.id }} {
@@ -46,11 +78,11 @@
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} {
       {%- if section.settings.logo != blank -%}
-        --header-logo-width: {{ section.settings.logo_max_width }}px;
-        --header-logo-height: {{ section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
+        --header-logo-width: {% if section.settings.reduce_padding %}{{ section.settings.logo_max_width | at_most: 70 }}{% else %}{{ section.settings.logo_max_width }}{% endif %}px;
+        --header-logo-height: {% if section.settings.reduce_padding %}{{ section.settings.logo_max_width | at_most: 70 | divided_by: section.settings.logo.aspect_ratio | round }}{% else %}{{ section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio | round }}{% endif %}px;
       {%- endif -%}
 
-      --header-padding-block: {% if section.settings.reduce_padding %}var(--spacing-6){% else %}var(--spacing-8-5){% endif %};
+      --header-padding-block: {% if section.settings.reduce_padding %}6px{% else %}var(--spacing-8-5){% endif %};
     }
   }
 
@@ -84,11 +116,6 @@
             <span class="sr-only">{{ 'header.general.menu' | t }}</span>
             {%- render 'icon' with 'hamburger' -%}
           </button>
-
-          <a href="{{ routes.search_url }}" class="tap-area sm:hidden" aria-controls="search-drawer">
-            <span class="sr-only">{{ 'header.general.search' | t }}</span>
-            {%- render 'icon' with 'search' -%}
-          </a>
 
           {%- if section.settings.layout != 'drawer' and section.settings.menu.links.size > 0 -%}
             <nav class="header__link-list {% if section.settings.layout == 'logo_left_navigation_center' %}justify-center{% endif %} wrap" role="navigation">
@@ -239,22 +266,6 @@
           {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
             <li class="hidden md:block shrink-0">
               {%- render 'localization-selector', type: 'locale', popover_vertical_position: 'end' -%}
-            </li>
-          {%- endif -%}
-
-          <li>
-            <a href="{{ routes.search_url }}" class="hidden tap-area sm:block" aria-controls="search-drawer">
-              <span class="sr-only">{{ 'header.general.search' | t }}</span>
-              {%- render 'icon' with 'search' -%}
-            </a>
-          </li>
-          
-          {%- if shop.customer_accounts_enabled -%}
-            <li>
-              <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="hidden tap-area sm:block">
-                <span class="sr-only">{% if customer %}{{ 'header.general.account' | t }}{% else %}{{ 'header.general.login' | t }}{% endif %}</span>
-                {%- render 'icon' with 'account' -%}
-              </a>
             </li>
           {%- endif -%}
 
@@ -516,6 +527,32 @@
       "id": "reduce_padding",
       "label": "Reduce padding",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_overlay",
+      "label": "Overlay logo (bigger without increasing header height)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "logo_overlay_scale",
+      "min": 100,
+      "max": 300,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay logo scale",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "logo_overlay_offset",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Overlay logo vertical offset",
+      "default": 50
     },
     {
       "type": "range",

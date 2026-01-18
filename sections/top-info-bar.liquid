@@ -1,0 +1,174 @@
+{%- if section.blocks.size > 0 -%}
+  <style>
+    {%- if section.settings.enable_sticky -%}
+      #shopify-section-{{ section.id }} {
+        position: sticky;
+        top: 0;
+        z-index: 21;
+      }
+
+      .shopify-section--header ~ #shopify-section-{{ section.id }} {
+        top: calc(var(--sticky-header-enabled, 0) * var(--header-height, 0px));
+      }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .top-info-bar {
+      min-height: {{ section.settings.min_height | default: 32 }}px;
+      padding-block: {{ section.settings.padding_vertical | default: 6 }}px;
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: center;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-2);
+      min-height: {{ section.settings.min_height | default: 32 }}px;
+      padding-inline: var(--spacing-4);
+    }
+
+    #shopify-section-{{ section.id }} .top-info-bar__item + .top-info-bar__item {
+      border-left: 1px solid {{ section.settings.divider_color | default: 'rgba(255,255,255,0.35)' }};
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .top-info-bar__wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      #shopify-section-{{ section.id }} .top-info-bar__item + .top-info-bar__item {
+        border-left: 0;
+      }
+    }
+  </style>
+
+  <div {% render 'surface', class: 'top-info-bar', background: section.settings.background, background_gradient: section.settings.background_gradient, text_color: section.settings.text_color %}>
+    <div class="container">
+      <div class="top-info-bar__wrapper">
+        {%- for block in section.blocks limit: 3 -%}
+          <div class="top-info-bar__item bold {{ section.settings.text_size }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.url != blank -%}
+              <a href="{{ block.settings.url }}" style="color: inherit; text-decoration: none;">
+                {{ block.settings.text | escape }}
+              </a>
+            {%- else -%}
+              {{ block.settings.text | escape }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Top info bar",
+  "class": "shopify-section--top-info-bar",
+  "tag": "aside",
+  "max_blocks": 3,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "blocks": [
+    {
+      "type": "top_info_item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Announcement"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable sticky bar",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 24,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Minimum height",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        { "value": "text-xxs", "label": "X-Small" },
+        { "value": "text-xs", "label": "Small" },
+        { "value": "text-base", "label": "Medium" },
+        { "value": "text-lg", "label": "Large" }
+      ],
+      "default": "text-xs"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top info bar",
+      "blocks": [
+        { "type": "top_info_item" },
+        { "type": "top_info_item" },
+        { "type": "top_info_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

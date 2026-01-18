@@ -1,0 +1,194 @@
+{%- if section.blocks.size > 0 -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --below-header-benefits-gap: {{ section.settings.gap }}px;
+      --below-header-benefits-padding: {{ section.settings.padding_vertical }}px;
+      --below-header-benefits-divider: {{ section.settings.divider_color | default: 'rgba(0,0,0,0.12)' }};
+    }
+
+    #shopify-section-{{ section.id }} .below-header-benefits {
+      padding-block: var(--below-header-benefits-padding);
+    }
+
+    #shopify-section-{{ section.id }} .below-header-benefits__list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: center;
+      gap: var(--below-header-benefits-gap);
+    }
+
+    #shopify-section-{{ section.id }} .below-header-benefits__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-2);
+      text-align: center;
+      min-height: 24px;
+      padding-inline: var(--spacing-4);
+    }
+
+    #shopify-section-{{ section.id }} .below-header-benefits__item + .below-header-benefits__item {
+      border-left: 1px solid var(--below-header-benefits-divider);
+    }
+
+    #shopify-section-{{ section.id }} .below-header-benefits__icon {
+      flex: 0 0 auto;
+      width: {{ section.settings.icon_size }}px;
+      height: {{ section.settings.icon_size }}px;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .below-header-benefits__list {
+        grid-template-columns: 1fr;
+      }
+
+      #shopify-section-{{ section.id }} .below-header-benefits__item + .below-header-benefits__item {
+        border-left: 0;
+      }
+    }
+  </style>
+
+  <div {% render 'surface', class: 'below-header-benefits', background: section.settings.background, background_gradient: section.settings.background_gradient, text_color: section.settings.text_color %}>
+    <div class="container">
+      <div class="below-header-benefits__list">
+        {%- for block in section.blocks limit: 3 -%}
+          <div class="below-header-benefits__item text-xs" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != 'none' -%}
+              {%- render 'icon' with block.settings.icon, class: 'below-header-benefits__icon' -%}
+            {%- endif -%}
+
+            <span class="bold">{{ block.settings.text | escape }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Below header benefits",
+  "class": "shopify-section--below-header-benefits",
+  "tag": "section",
+  "max_blocks": 3,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "check", "label": "Check" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "star", "label": "Star" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Benefit text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Gap",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Below header benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Preview in 2-3 days",
+            "icon": "clock"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Unlimited revisions",
+            "icon": "check"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Upload any photo",
+            "icon": "truck"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
