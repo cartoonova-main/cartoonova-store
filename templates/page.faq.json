@@ -1,1 +1,133 @@
-{"sections":{"main":{"type":"main-page","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "faq_gVaXU9": {
+      "type": "faq",
+      "blocks": {
+        "item_UA3BaR": {
+          "type": "item",
+          "settings": {
+            "title": "How long does it take?",
+            "content": "<p>Our team of artists work as fast as they can but sometimes we are very busy, we aim to get your hand drawn portrait out to you by 7 days (often a lot faster), if you have an emergency drop us an email and we can see what we can do.</p>"
+          }
+        },
+        "item_jnyMYa": {
+          "type": "item",
+          "settings": {
+            "title": "How is the portrait sent?",
+            "content": "<p>Your portrait will be digital so it will be emailed to you when it’s complete, ready to print or put on a mug, t-shirt whatever you decide to do with it.</p>"
+          }
+        },
+        "item_qM9iPD": {
+          "type": "item",
+          "settings": {
+            "title": "What if I am not happy with my portrait?",
+            "content": "<p>Our artists are incredibly talented and always do an amazing job, however sometimes working from a photo we miss the essence of the person and are always ready to make revisions until you are 100% happy with your portrait.</p>"
+          }
+        },
+        "item_F4FRQq": {
+          "type": "item",
+          "settings": {
+            "title": "Can I do whatever I want with my portrait?",
+            "content": "<p>Yes, absolutely, unlike some we put no restrictions on your portrait, it’s yours to do whatever you want with.</p>"
+          }
+        },
+        "item_txgzdb": {
+          "type": "item",
+          "settings": {
+            "title": "What can I have as my background?",
+            "content": "<p>Whatever you want, just let us know and we will make it happen.</p>"
+          }
+        },
+        "item_xTcDLh": {
+          "type": "item",
+          "settings": {
+            "title": "Do pets count as a person?",
+            "content": "<p>Yes.</p>"
+          }
+        },
+        "item_FJPRfC": {
+          "type": "item",
+          "settings": {
+            "title": "Can my portrait look more like the yellow TV family?",
+            "content": "<p>All our portraits are hand drawn so we can do whatever you want, just let us know.<br/></p>"
+          }
+        },
+        "item_dCgNj8": {
+          "type": "item",
+          "settings": {
+            "title": "Can you work from more than one photo?",
+            "content": "<p>All our portraits are hand drawn so we can do whatever you want, just let us know.</p>"
+          }
+        },
+        "item_tcPz9L": {
+          "type": "item",
+          "settings": {
+            "title": "What quality should the photo I send you be?",
+            "content": "<p>Simple, the better quality the photo you send the better quality we will be able to achieve, get the best color photo you can.</p>"
+          }
+        },
+        "item_hw8rqx": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_UA3BaR",
+        "item_jnyMYa",
+        "item_qM9iPD",
+        "item_F4FRQq",
+        "item_txgzdb",
+        "item_xTcDLh",
+        "item_FJPRfC",
+        "item_dCgNj8",
+        "item_tcPz9L",
+        "item_hw8rqx"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq_gVaXU9"
+  ]
+}
