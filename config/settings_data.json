@@ -46,11 +46,6 @@
         "disabled": false,
         "settings": {}
       },
-      "4981902369724952902": {
-        "type": "shopify://apps/vo-product-options/blocks/embed-block/430cbd7b-bd20-4c16-ba41-db6f4c645164",
-        "disabled": false,
-        "settings": {}
-      },
       "2187360915322861293": {
         "type": "shopify://apps/uploadly-file-upload/blocks/app-embed/d91e9a53-de3d-49df-b7a1-ac8a15b213e5",
         "disabled": false,
@@ -164,5 +159,10 @@
       "product_color_display": "swatch",
       "product_info_alignment": "center"
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".po-extra-price {display: none;}"
+    ]
   }
 }
