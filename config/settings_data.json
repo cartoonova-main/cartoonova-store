@@ -28,10 +28,10 @@
     "secondary_button_text_color": "#1a1a1a",
     "product_card_text_color": "#1a1a1a",
     "product_primary_badge_background": "#803cee",
-    "heading_font": "barlow_n7",
+    "heading_font": "titan_one_n4",
     "heading_font_size": "large",
     "heading_letter_spacing": -2,
-    "text_font": "barlow_n4",
+    "text_font": "comfortaa_n4",
     "heading_apparition": "split_fade",
     "product_color_display": "swatch",
     "product_info_alignment": "start",
@@ -41,11 +41,6 @@
     "checkout_button_color": "#1a1a1a",
     "content_for_index": [],
     "blocks": {
-      "11432920177897217407": {
-        "type": "shopify://apps/epa-easy-product-addons/blocks/speedup_link/0099190e-a0cb-49e7-8d26-026c9d26f337",
-        "disabled": false,
-        "settings": {}
-      },
       "2187360915322861293": {
         "type": "shopify://apps/uploadly-file-upload/blocks/app-embed/d91e9a53-de3d-49df-b7a1-ac8a15b213e5",
         "disabled": false,
