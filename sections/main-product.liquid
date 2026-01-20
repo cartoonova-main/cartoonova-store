@@ -41,15 +41,23 @@
   /* Simpsons style - Product page */
   #shopify-section-{{ section.id }} .product-info {
     background: linear-gradient(180deg, #fffef5 0%, #ffffff 100%);
-    padding: var(--spacing-8);
-    border-radius: 20px;
-    border: 3px solid rgba(255, 215, 0, 0.25);
+    padding: var(--spacing-4);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 215, 0, 0.25);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-info {
+      padding: var(--spacing-6);
+      border-radius: 20px;
+      border-width: 3px;
+    }
   }
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} .product-info {
-      padding: var(--spacing-10);
+      padding: var(--spacing-8);
     }
   }
 
@@ -58,6 +66,21 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.02em;
+    font-size: 1.4rem;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-info h1,
+    #shopify-section-{{ section.id }} .product-info h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-info h1,
+    #shopify-section-{{ section.id }} .product-info h2 {
+      font-size: 2rem;
+    }
   }
 
   #shopify-section-{{ section.id }} .price-list {
@@ -70,14 +93,22 @@
   #shopify-section-{{ section.id }} .price-list sale-price,
   #shopify-section-{{ section.id }} .product-info__price {
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #1a1a1a;
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 8px;
     box-shadow: 0 2px 0 #e6c200;
     display: inline-block;
     line-height: 1.3;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .price-list sale-price,
+    #shopify-section-{{ section.id }} .product-info__price {
+      font-size: 1.5rem;
+      padding: 6px 14px;
+    }
   }
 
   #shopify-section-{{ section.id }} .price-list compare-price {
@@ -118,8 +149,8 @@
     border: 2px solid #d4a017 !important;
     border-radius: 12px !important;
     font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    padding: 18px 40px !important;
+    font-size: 0.95rem !important;
+    padding: 14px 20px !important;
     box-shadow: none !important;
     transition: background 0.2s ease, transform 0.2s ease !important;
     text-transform: none !important;
@@ -127,6 +158,15 @@
     width: 100% !important;
     display: block !important;
     text-align: center !important;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .button--primary,
+    #shopify-section-{{ section.id }} .button--secondary,
+    #shopify-section-{{ section.id }} buy-buttons .button {
+      font-size: 1.1rem !important;
+      padding: 18px 40px !important;
+    }
   }
 
   #shopify-section-{{ section.id }} .button--primary:hover,
@@ -172,18 +212,34 @@
   /* BSS Product Options - Simpsons style */
   .bss-po-product-page {
     background: #fffef5;
-    padding: 20px;
-    border-radius: 16px;
-    border: 3px solid rgba(255, 215, 0, 0.3);
-    margin: var(--spacing-4) 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    margin: var(--spacing-3) 0;
+  }
+
+  @media screen and (min-width: 700px) {
+    .bss-po-product-page {
+      padding: 20px;
+      border-radius: 16px;
+      border-width: 3px;
+      margin: var(--spacing-4) 0;
+    }
   }
 
   .bss-po-product-page .po-label {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: block;
+  }
+
+  @media screen and (min-width: 700px) {
+    .bss-po-product-page .po-label {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
   }
 
   .bss-po-product-page .po-required {
@@ -215,10 +271,17 @@
     background: #ffffff;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     text-align: center;
     transition: all 0.2s ease;
-    min-width: 40px;
+    min-width: 36px;
+  }
+
+  @media screen and (min-width: 700px) {
+    .bss-po-product-page .po-option__button-media {
+      padding: 8px 12px;
+      min-width: 40px;
+    }
   }
 
   .bss-po-product-page .po-option__button-media:hover {
@@ -258,13 +321,22 @@
   }
 
   .bss-po-product-page .po-option__swatch-media {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
     overflow: hidden;
-    border: 3px solid #e0e0e0;
+    border: 2px solid #e0e0e0;
     cursor: pointer;
     transition: all 0.2s ease;
+  }
+
+  @media screen and (min-width: 700px) {
+    .bss-po-product-page .po-option__swatch-media {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      border-width: 3px;
+    }
   }
 
   .bss-po-product-page .po-option__swatch-media:hover {
@@ -332,6 +404,44 @@
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   }
 
+  /* Product Benefits Badges - Hidden, using mobile version only */
+  .product-benefits-badges {
+    display: none;
+  }
+
+  /* Mobile/Tablet benefits bar - always visible */
+  .product-benefits-mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: var(--spacing-4);
+    justify-content: center;
+  }
+
+  .product-benefits-mobile__item {
+    background: #ffffff;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .product-benefits-mobile__item:hover {
+    transform: translateY(-2px);
+    border-color: #FFD700;
+  }
+
+  .product-benefits-mobile__icon {
+    font-size: 1.2rem;
+  }
+
   #shopify-section-{{ section.id }} .block-swatch {
     border-radius: 12px;
     border-width: 3px;
@@ -379,6 +489,26 @@
 
 <div {% render 'section-properties', tight: true %}>
   <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
+    <!-- Mobile Benefits Bar -->
+    <div class="product-benefits-mobile">
+      <div class="product-benefits-mobile__item">
+        <span class="product-benefits-mobile__icon">🧑‍🎨✏️</span>
+        <span>Real Artists</span>
+      </div>
+      <div class="product-benefits-mobile__item">
+        <span class="product-benefits-mobile__icon">✏️</span>
+        <span>Unlimited Revisions</span>
+      </div>
+      <div class="product-benefits-mobile__item">
+        <span class="product-benefits-mobile__icon">🖼️</span>
+        <span>Upload Any Photo</span>
+      </div>
+      <div class="product-benefits-mobile__item">
+        <span class="product-benefits-mobile__icon">⚡</span>
+        <span>Ready in 2-3 days</span>
+      </div>
+    </div>
+
     <div class="product">
       {%- if product.media.size > 0 -%}
         {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}

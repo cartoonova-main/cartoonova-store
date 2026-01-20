@@ -87,13 +87,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-3);
+    gap: var(--spacing-2);
     background: var(--hero-btn-bg);
     color: var(--hero-btn-text);
-    padding: 18px 36px;
+    padding: 14px 24px;
     border-radius: 50px;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -101,6 +101,14 @@
     max-width: fit-content;
     box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.1);
     border: 3px solid rgba(0,0,0,0.1);
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-with-image__button {
+      padding: 18px 36px;
+      font-size: 1.1rem;
+      gap: var(--spacing-3);
+    }
   }
 
   .hero-with-image__button:hover {
@@ -115,22 +123,38 @@
 
   .hero-with-image__benefits {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-6);
-    margin-top: var(--spacing-6);
-    padding: var(--spacing-4) var(--spacing-6);
+    flex-direction: column;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-4);
     background: rgba(255, 216, 0, 0.1);
     border-radius: 12px;
     border: 2px dashed rgba(255, 216, 0, 0.4);
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-with-image__benefits {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-6);
+      padding: var(--spacing-4) var(--spacing-6);
+    }
   }
 
   .hero-with-image__benefit {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-2);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     font-weight: 600;
     color: var(--hero-text);
+  }
+
+  @media screen and (min-width: 700px) {
+    .hero-with-image__benefit {
+      font-size: var(--text-sm);
+    }
   }
 
   .hero-with-image__benefit-icon {

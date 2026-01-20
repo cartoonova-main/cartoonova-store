@@ -34,14 +34,22 @@
   .how-it-works__title::after {
     content: '';
     position: absolute;
-    bottom: -12px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 6px;
+    width: 60px;
+    height: 4px;
     background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+  }
+
+  @media screen and (min-width: 700px) {
+    .how-it-works__title::after {
+      bottom: -12px;
+      width: 80px;
+      height: 6px;
+    }
   }
 
   .how-it-works__steps {

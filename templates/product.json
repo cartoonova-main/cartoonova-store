@@ -121,6 +121,53 @@
         "input_text_color": ""
       }
     },
+    "product-benefits": {
+      "type": "product-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "revision",
+            "title": "Unlimited Free Revisions — Happiness Guaranteed",
+            "description": "We perfect your cartoon portrait until you love it. Every detail is customized to your photos."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "artist",
+            "title": "100% Hand-Drawn by Professional Artists",
+            "description": "No AI filters — your Simpsons-style portrait is created by real artists for a one-of-a-kind gift."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shipping",
+            "title": "Fast Artwork, Clear Shipping",
+            "description": "First draft in 2–3 days. Merchandise ships 4–12 business days after your approval."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "reviews",
+            "title": "15,800+ 5-Star Reviews Worldwide",
+            "description": "Join thousands who love gifting personalized cartoon portraits that bring laughter and unforgettable memories."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "title_line1": "Surprise Your Loved Ones with a",
+        "title_line2": "Custom Simpsons-Style Portrait"
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -158,6 +205,7 @@
   },
   "order": [
     "main",
+    "product-benefits",
     "related-products",
     "176863554637701f52"
   ]
