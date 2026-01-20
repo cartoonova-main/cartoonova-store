@@ -7,6 +7,128 @@
     --section-stack-intro: {% if text_position == 'center' %}66.6667%{% elsif section.settings.contact_form_size == 'small' %}50%{% else %}41.6667%{% endif %};
     --section-stack-main: {% if section.settings.contact_form_size == 'small' %}50%{% else %}58.3334%{% endif %};
   }
+
+  /* Simpsons style - Contact page */
+  #shopify-section-{{ section.id }} {
+    background: linear-gradient(180deg, #fffef5 0%, #fff8e1 100%);
+  }
+
+  #shopify-section-{{ section.id }} .h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    position: relative;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    border-radius: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .subheading {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  #shopify-section-{{ section.id }} .contact-form {
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    border: 4px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 0 rgba(255, 215, 0, 0.2);
+    padding: var(--spacing-8) !important;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .contact-form {
+      padding: var(--spacing-10) !important;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .input,
+  #shopify-section-{{ section.id }} .select,
+  #shopify-section-{{ section.id }} textarea {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #fafafa !important;
+  }
+
+  #shopify-section-{{ section.id }} .input:focus,
+  #shopify-section-{{ section.id }} .select:focus,
+  #shopify-section-{{ section.id }} textarea:focus {
+    border-color: #FFD700 !important;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.15) !important;
+    background: #ffffff !important;
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .floating-label {
+    font-weight: 600;
+    color: #555;
+  }
+
+  #shopify-section-{{ section.id }} .form .button {
+    background: #E8B923 !important;
+    color: #1a1a1a !important;
+    border: 2px solid #d4a017 !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    padding: 16px 40px !important;
+    transition: background 0.2s ease, transform 0.2s ease !important;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .form .button:hover {
+    background: #d4a017 !important;
+    transform: translateY(-2px);
+  }
+
+  #shopify-section-{{ section.id }} .banner--success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    border-radius: 12px;
+    padding: 16px;
+    color: white;
+  }
+
+  #shopify-section-{{ section.id }} .banner--error {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    border-radius: 12px;
+    padding: 16px;
+    color: white;
+  }
+
+  #shopify-section-{{ section.id }} .fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+  }
+
+  #shopify-section-{{ section.id }} .input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-5);
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .input-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>
 
 <div {% render 'section-properties' %}>
