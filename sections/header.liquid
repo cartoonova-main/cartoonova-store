@@ -99,6 +99,82 @@
       }
     }
   {%- endif -%}
+
+  /* Simpsons style enhancements */
+  #shopify-section-{{ section.id }} .header {
+    border-bottom: 3px solid rgba(255, 215, 0, 0.35);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  #shopify-section-{{ section.id }} .header__icon-list button,
+  #shopify-section-{{ section.id }} .header__icon-list a {
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .header__icon-list button:hover,
+  #shopify-section-{{ section.id }} .header__icon-list a:hover {
+    transform: scale(1.12);
+    color: #FFD700;
+  }
+
+  #shopify-section-{{ section.id }} .header__cart-count .count-bubble {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #1a1a1a;
+    font-weight: 800;
+    box-shadow: 0 2px 6px rgba(255, 165, 0, 0.4);
+  }
+
+  #shopify-section-{{ section.id }} .header nav a {
+    position: relative;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+  }
+
+  #shopify-section-{{ section.id }} .header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    border-radius: 2px;
+    transition: width 0.25s ease, left 0.25s ease;
+  }
+
+  #shopify-section-{{ section.id }} .header nav a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  #shopify-section-{{ section.id }} .header nav a:hover {
+    color: #d97706;
+  }
+
+  #shopify-section-{{ section.id }} .header__logo-image {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: logo-float 3s ease-in-out infinite;
+  }
+
+  @keyframes logo-float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-3px) rotate(1deg);
+    }
+    75% {
+      transform: translateY(2px) rotate(-1deg);
+    }
+  }
+
+  #shopify-section-{{ section.id }} .header__logo:hover .header__logo-image {
+    animation-play-state: paused;
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.4));
+  }
 </style>
 
 <height-observer variable="header">

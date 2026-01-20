@@ -5,7 +5,7 @@
     --how-it-works-gap: {% if section.settings.gap == 'small' %}var(--spacing-8){% elsif section.settings.gap == 'medium' %}var(--spacing-12){% elsif section.settings.gap == 'large' %}var(--spacing-16){% else %}var(--spacing-20){% endif %};
     --circle-size-mobile: 200px;
     --circle-size-desktop: 280px;
-    --circle-border-width: 4px;
+    --circle-border-width: 6px;
     --circle-border-color: {{ section.settings.circle_border_color | default: '#FFD700' }};
     --step-number-color: {{ section.settings.step_number_color | default: '#FFD700' }};
     --title-underline-color: {{ section.settings.title_underline_color | default: '#FFD700' }};
@@ -26,19 +26,22 @@
   .how-it-works__title {
     position: relative;
     display: inline-block;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: var(--spacing-10);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .how-it-works__title::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--title-underline-color);
-    border-radius: 2px;
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
   }
 
   .how-it-works__steps {
@@ -48,6 +51,7 @@
     align-items: start;
     justify-items: center;
     margin-bottom: 0;
+    position: relative;
   }
 
   @media screen and (min-width: 700px) {
@@ -55,11 +59,27 @@
       grid-template-columns: repeat(3, 1fr);
       gap: var(--spacing-8);
     }
+
+    .how-it-works__steps::before {
+      content: '';
+      position: absolute;
+      top: calc(var(--circle-size-mobile) / 2);
+      left: calc(16.66% + 40px);
+      right: calc(16.66% + 40px);
+      height: 4px;
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+      border-radius: 2px;
+      z-index: 0;
+    }
   }
 
   @media screen and (min-width: 1000px) {
     .how-it-works__steps {
       gap: var(--how-it-works-gap);
+    }
+
+    .how-it-works__steps::before {
+      top: calc(var(--circle-size-desktop) / 2);
     }
   }
 
@@ -69,6 +89,13 @@
     align-items: center;
     text-align: center;
     max-width: 100%;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .how-it-works__step:hover {
+    transform: translateY(-8px);
   }
 
   .how-it-works__circle {
@@ -79,11 +106,18 @@
     overflow: hidden;
     position: relative;
     margin-bottom: var(--spacing-6);
-    background: var(--step-circle-background, transparent);
+    background: var(--step-circle-background, #fff);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.25), 0 4px 0 rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .how-it-works__step:hover .how-it-works__circle {
+    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.35), 0 6px 0 rgba(0,0,0,0.08);
+    transform: scale(1.03);
   }
 
   @media screen and (min-width: 1000px) {
@@ -102,24 +136,30 @@
 
   .how-it-works__step-number {
     color: var(--step-number-color);
-    font-weight: 700;
-    font-size: 0.875rem;
+    font-weight: 800;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     margin-bottom: var(--spacing-2);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
   }
 
   @media screen and (min-width: 700px) {
     .how-it-works__step-number {
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
   }
 
   .how-it-works__step-title {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     line-height: 1.4;
     margin: 0;
+    max-width: 220px;
   }
 
   @media screen and (min-width: 700px) {
@@ -131,19 +171,30 @@
   @media screen and (min-width: 1000px) {
     .how-it-works__step-title {
       font-size: 1.25rem;
+      max-width: 260px;
     }
   }
 
   .how-it-works__button-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: var(--spacing-6);
+    margin-top: var(--spacing-10);
   }
 
-  @media screen and (min-width: 700px) {
-    .how-it-works__button-wrapper {
-      margin-top: var(--spacing-6);
-    }
+  .how-it-works__button-wrapper .button {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .how-it-works__button-wrapper .button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 0 rgba(0,0,0,0.15), 0 12px 30px rgba(0,0,0,0.15);
   }
 </style>
 

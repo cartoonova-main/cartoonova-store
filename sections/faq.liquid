@@ -7,6 +7,86 @@
     --section-stack-intro: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
     --section-stack-main: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
   }
+
+  #shopify-section-{{ section.id }} .h2 {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  #shopify-section-{{ section.id }} .h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+    border-radius: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-box {
+    border: 4px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 4px 0 rgba(255, 215, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .accordion {
+    border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    transition: background 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .accordion:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .accordion:hover {
+    background: rgba(255, 215, 0, 0.05);
+  }
+
+  #shopify-section-{{ section.id }} .accordion__title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: var(--spacing-5) var(--spacing-6);
+  }
+
+  #shopify-section-{{ section.id }} .accordion[open] .accordion__title {
+    color: #b45309;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__icon {
+    color: #FFD700;
+    transition: transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .accordion[open] .accordion__icon {
+    transform: rotate(180deg);
+    color: #FFA500;
+  }
+
+  #shopify-section-{{ section.id }} .faq-availability {
+    padding: var(--spacing-6);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 215, 0, 0.3);
+  }
+
+  #shopify-section-{{ section.id }} .faq-availability .button {
+    padding: 14px 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .faq-availability .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  }
 </style>
 
 <div {% render 'section-properties' %}>
