@@ -74,19 +74,21 @@
 
     @media screen and (max-width: 749px) {
       #shopify-section-{{ section.id }} .top-info-bar__wrapper {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2);
-      }
-
-      #shopify-section-{{ section.id }} .top-info-bar__item + .top-info-bar__item {
-        border-left: 0;
-        border-top: 1px solid {{ section.settings.divider_color | default: 'rgba(0,0,0,0.1)' }};
-        padding-top: var(--spacing-2);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--spacing-1);
       }
 
       #shopify-section-{{ section.id }} .top-info-bar__item {
         min-height: auto;
+        padding-inline: var(--spacing-1);
         padding-block: 4px;
+        font-size: 0.6rem;
+        gap: 4px;
+      }
+
+      #shopify-section-{{ section.id }} .top-info-bar__item-icon {
+        width: 14px;
+        height: 14px;
       }
     }
   </style>

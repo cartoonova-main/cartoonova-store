@@ -411,26 +411,35 @@
 
   /* Mobile/Tablet benefits bar - always visible */
   .product-benefits-mobile {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
     margin-bottom: var(--spacing-4);
-    justify-content: center;
+  }
+
+  @media screen and (min-width: 500px) {
+    .product-benefits-mobile {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
   }
 
   .product-benefits-mobile__item {
     background: #ffffff;
     border: 2px solid rgba(255, 215, 0, 0.3);
     border-radius: 10px;
-    padding: 10px 14px;
+    padding: 8px 6px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.65rem;
     font-weight: 600;
     color: #1a1a1a;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .product-benefits-mobile__item:hover {
@@ -439,7 +448,31 @@
   }
 
   .product-benefits-mobile__icon {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 500px) {
+    .product-benefits-mobile__item {
+      padding: 10px 8px;
+      font-size: 0.75rem;
+    }
+
+    .product-benefits-mobile__icon {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 700px) {
+    .product-benefits-mobile__item {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      gap: 8px;
+    }
+
+    .product-benefits-mobile__icon {
+      font-size: 1.2rem;
+    }
   }
 
   #shopify-section-{{ section.id }} .block-swatch {

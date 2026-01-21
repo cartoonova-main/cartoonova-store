@@ -2,7 +2,7 @@
 
 <style>
   #shopify-section-{{ section.id }} {
-    background: linear-gradient(180deg, #fffef5 0%, #fff8e1 100%);
+    background: #ffffff;
   }
 
   .product-benefits {
@@ -59,17 +59,17 @@
     flex-shrink: 0;
     width: 50px;
     height: 50px;
-    background: rgba(232, 185, 35, 0.15);
-    border-radius: 12px;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .product-benefits__icon svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     color: #E8B923;
+    stroke-width: 1.5;
   }
 
   .product-benefits__item-content {
@@ -85,10 +85,11 @@
   }
 
   .product-benefits__item-description {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 0.9rem;
+    color: #777;
     line-height: 1.5;
     margin: 0;
+    font-style: italic;
   }
 
   .product-benefits__image-wrapper {
@@ -100,9 +101,6 @@
   .product-benefits__image {
     width: 100%;
     max-width: 450px;
-    border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border: 4px solid rgba(255, 215, 0, 0.3);
   }
 
   @media screen and (max-width: 899px) {
