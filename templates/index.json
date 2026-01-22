@@ -254,7 +254,7 @@
             "image_position": "left",
             "step_number": "Final step",
             "step_title": "Give us more details",
-            "step_text": "<p>The fun is in the details! Further customize your drawing by providing more details in the Notes section. Have your loved ones in their favorite clothes or holding their favorite drink. Have your family name inscribed in your drawing for an even more fun gift! </p>",
+            "step_text": "<p>The fun is in the details ! </p><p>Further customize your drawing by providing more details in the Notes section. </p><p>Have your loved ones in their favorite clothes or holding their favorite drink. </p><p>Have your family name inscribed in your drawing for an even more fun gift ! </p>",
             "button_text": "GET STARTED",
             "button_url": "shopify://products/simpsons",
             "button_style": "fill",
