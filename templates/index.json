@@ -271,7 +271,7 @@
             "image_position": "left",
             "step_number": "Optional",
             "step_title": "Print your artwork",
-            "step_text": "<p><strong>Complete your gift by having it printed!Use your digital artwork to print it at a local shop or order a print from us and we will handle all the work.</strong></p>",
+            "step_text": "<p><strong>Complete your gift by having it printed !</strong></p><p><strong>Use your digital artwork to print it at a local shop or order a print from us and we will handle all the work.</strong></p>",
             "button_text": "GET STARTED",
             "button_url": "shopify://products/simpsons",
             "button_style": "fill",
