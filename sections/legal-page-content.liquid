@@ -1,0 +1,106 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  .legal-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-10) var(--container-gutter);
+  }
+
+  .legal-page h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .legal-page h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: var(--spacing-8);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .legal-page h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: var(--spacing-5);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .legal-page p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .legal-page ul, .legal-page ol {
+    margin-bottom: var(--spacing-4);
+    padding-left: var(--spacing-6);
+  }
+
+  .legal-page li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .legal-page strong {
+    color: #1a1a1a;
+  }
+
+  .legal-page em {
+    color: #666;
+  }
+
+  .legal-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-4) 0;
+  }
+
+  .legal-page th, .legal-page td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+  }
+
+  .legal-page th {
+    background: #f5f5f5;
+    font-weight: 600;
+  }
+
+  .legal-page .last-updated {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-6);
+  }
+</style>
+
+<div class="legal-page">
+  {{ section.settings.content }}
+</div>
+
+{% schema %}
+{
+  "name": "Legal Page Content",
+  "class": "shopify-section--legal-page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Page Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Legal Page Content"
+    }
+  ]
+}
+{% endschema %}
