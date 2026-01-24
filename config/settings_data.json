@@ -55,6 +55,11 @@
         "type": "shopify://apps/optis-product-options/blocks/bss-po-script/2c446099-c349-4e73-80cd-49c9770b7807",
         "disabled": false,
         "settings": {}
+      },
+      "7313114205116804392": {
+        "type": "shopify://apps/propel-replays-heatmaps/blocks/app-embed/64fbaaa3-2d4a-49f3-aba7-86e92e44999f",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
